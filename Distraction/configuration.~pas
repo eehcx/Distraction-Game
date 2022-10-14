@@ -1,0 +1,114 @@
+unit configuration;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls;
+
+type
+  TformConfig = class(TForm)
+    Panel1: TPanel;
+    btnCerrar: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    procedure btnCerrarClick(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formConfig: TformConfig;
+
+implementation
+
+uses login, Level1, Level2, levels, nivel2, nivel3, nivel4, nivel5;
+
+{$R *.dfm}
+
+procedure TformConfig.btnCerrarClick(Sender: TObject);
+begin
+   Application.MessageBox('Saldrás del juego y perderás tu progreso','    Mensaje',Mb_IconQuestion + Mb_Ok);
+    formLogin.Close;
+end;
+
+procedure TformConfig.Panel2Click(Sender: TObject);
+begin
+    Close;
+end;
+
+procedure TformConfig.Panel3Click(Sender: TObject);
+begin
+    formNivel1.Close;
+    formNiveles2.Close;
+    formNiveles3.Close;
+    formNiveles4.Close;
+    formNiveles5.Close;
+    Close;
+    formNiveles.Show;
+    btnReiniciar.Visible:=False;
+
+    E1.Visible:=False;
+    E2.Visible:=False;
+    E3.Visible:=False;
+    E4.Visible:=False;
+    E5.Visible:=False;
+    L_Ingrese.Visible:=False;
+    btnAgregar.Visible:=False;
+    btnComprobar.Visible:=False;
+
+        ListCartas.Items.Clear;
+        ListComprobar.Items.Clear;    
+        memoCartas.Lines.Clear;
+        memoComprobar.Lines.Clear;
+        
+        IMG1.Picture:=nil;
+        IMG2.Picture:=nil;
+        IMG3.Picture:=nil;
+        IMG4.Picture:=nil;
+        IMG5.Picture:=nil;
+
+        R1.Picture:=nil;
+        R2.Picture:=nil;
+        R3.Picture:=nil;
+        R4.Picture:=nil;
+        R5.Picture:=nil;
+
+        TR1.Picture:=nil;
+        TR2.Picture:=nil;
+        TR3.Picture:=nil;
+        TR4.Picture:=nil;
+        TR5.Picture:=nil;
+
+        Respuestas.Visible:=False;
+        L_Ganaste.Visible:=False;
+        L_Perdiste.Visible:=False;
+        P_Principal.Visible:=True;
+
+        TimerEdit.Enabled:=False;
+        TimerTablero.Enabled:=False;
+        TimerCerrar.Enabled:=False;
+        AbrirPregunta.Enabled:=False;
+
+        L_TextoInfo.Visible:=False;
+
+        btnGenerar.Color:=clBlack;
+        btnGenerar.Font.Color:=clWhite;
+
+        btnComprobar.Color:=clBlack;
+        btnComprobar.Font.Color:=clWhite;
+
+        btnAgregar.Color:=clBlack;
+        btnAgregar.Font.Color:=clWhite;
+
+        btnGenerar.Enabled:=True;
+        L_TextoInfo.Caption:='ACONTINUACIÓN, RESPONDE LAS PREGUNTAS';
+        btnComprobar.Enabled:=True;
+        btnAgregar.Enabled:=True;
+end;
+
+end.
